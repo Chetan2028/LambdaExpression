@@ -17,7 +17,7 @@ namespace LambdaExpression
             listPersonsInCity.Add(new Person("203456880", "SAM", "345 Main Ave, Dayton, OH", 55));
             listPersonsInCity.Add(new Person("203456881", "Sue", "32 Cranbrook Rd, Newyork, NY", 65));
             listPersonsInCity.Add(new Person("203456882", "Winston", "1208 Alex St, Newyork, NY", 65));
-            listPersonsInCity.Add(new Person("203456883", "Mac", "126 Province Ave, Baltimore, NY", 17));
+            listPersonsInCity.Add(new Person("203456883", "Mac", "126 Province Ave, Baltimore, NY", 85));
             listPersonsInCity.Add(new Person("203456884", "SAM", "126 Province Ave, Baltimore, NY", 95));
 
             Console.WriteLine("\n-----------------------------------------------------------------------------");
@@ -42,6 +42,12 @@ namespace LambdaExpression
             if (listPersonsInCity.Exists(e => e.Name == "SAM"))
             {
                 Console.WriteLine("Yes, A person having name  'SAM' exists in our list");
+            }
+
+            Console.WriteLine("\nSkipping every person whose age is less than 60 years...");
+            foreach (Person pers in listPersonsInCity.SkipWhile(e => e.Age < 60))
+            {
+                Console.WriteLine("Name : " + pers.Name + " \t\tAge: " + pers.Age);
             }
         }
     }
