@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LambdaExpression
 {
@@ -18,6 +19,13 @@ namespace LambdaExpression
             listPersonsInCity.Add(new Person("203456882", "Winston", "1208 Alex St, Newyork, NY", 65));
             listPersonsInCity.Add(new Person("203456883", "Mac", "126 Province Ave, Baltimore, NY", 85));
             listPersonsInCity.Add(new Person("203456884", "SAM", "126 Province Ave, Baltimore, NY", 95));
+
+            Console.WriteLine("\n-----------------------------------------------------------------------------");
+            Console.WriteLine("Retrieving Top 2 aged persons from the list who are older than 60 years\n");
+            foreach (Person person in listPersonsInCity.FindAll(e => (e.Age < 60)).Take(2).ToList())
+            {
+                Console.WriteLine("Name : " + person.Name + " \t\tAge: " + person.Age);
+            }
         }
     }
 }
