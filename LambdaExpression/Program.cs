@@ -20,6 +20,11 @@ namespace LambdaExpression
             listPersonsInCity.Add(new Person("203456883", "Mac", "126 Province Ave, Baltimore, NY", 85));
             listPersonsInCity.Add(new Person("203456884", "SAM", "126 Province Ave, Baltimore, NY", 95));
 
+            foreach (Person pers in listPersonsInCity)
+            {
+                Console.WriteLine("Name : " + pers.Name + " \t\tAge: " + pers.Age);
+            }
+
             Console.WriteLine("\n-----------------------------------------------------------------------------");
             Console.WriteLine("Retrieving Top 2 aged persons from the list who are older than 60 years\n");
             foreach (Person person in listPersonsInCity.FindAll(e => (e.Age < 60)).Take(2).ToList())
@@ -46,6 +51,20 @@ namespace LambdaExpression
 
             Console.WriteLine("\nSkipping every person whose age is less than 60 years...");
             foreach (Person pers in listPersonsInCity.SkipWhile(e => e.Age < 60))
+            {
+                Console.WriteLine("Name : " + pers.Name + " \t\tAge: " + pers.Age);
+            }
+
+
+
+            Console.WriteLine("\nRemoving all the persons record from list that have SAM name");
+            listPersonsInCity.RemoveAll(e => (e.Name == "SAM"));
+            if (listPersonsInCity.TrueForAll(e => e.Name != "SAM"))
+            {
+                Console.WriteLine("No person is found with 'SAM' name in current list");
+            }
+
+            foreach (Person pers in listPersonsInCity)
             {
                 Console.WriteLine("Name : " + pers.Name + " \t\tAge: " + pers.Age);
             }
